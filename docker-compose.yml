@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app:
+    env_file:
+      - .env
+    image: develop_image:latest
+    volumes:
+      - /home/water/.config/nvim/:/root/.config/nvim/
+      - ./${PROJECT_NAME}_api/:/app/${PROJECT_NAME}_api
+      - ./${PROJECT_NAME}_front/:/app/${PROJECT_NAME}_front
+    command: /bin/bash
+    ports:
+      - 3000:3000
+    tty: true
+  # editior:
+  #   image: my_nvim:basic
+  #   volumes:
+  #     - ./word_note/:/var/src
+  #     - /home/water/develop/my_nvim/ruby/:/root/.config/nvim/
+  #   tty: true
