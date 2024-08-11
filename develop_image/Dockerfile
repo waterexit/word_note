@@ -18,12 +18,13 @@ RUN apt purge -y nodejs npm && apt autoremove -y
 RUN npm install -g vite && \
 npm install -g tailwindcss
 
-RUN mkdir /app
-COPY . /app
-WORKDIR /app
+RUN mkdir -p /var/entry
+COPY . /var/entry
 
 RUN gem install rails
-RUN chmod +x /app/entrypoint.sh
-ENTRYPOINT ["/app/entrypoint.sh"]
+RUN chmod +x /var/entry/entrypoint.sh
+ENTRYPOINT ["/var/entry/entrypoint.sh"]
 
+RUN mkdir /app
+WORKDIR /app
 CMD ["rails", "server" ,"-b", "0.0.0.0"]

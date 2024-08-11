@@ -5,9 +5,9 @@ services:
       - .env
     image: develop_image:latest
     volumes:
-      - /home/water/.config/nvim/:/root/.config/nvim/
-      - ./${PROJECT_NAME}_api/:/app/${PROJECT_NAME}_api
-      - ./${PROJECT_NAME}_front/:/app/${PROJECT_NAME}_front
+      - ~/.gitconfig:/root/.gitconfig:ro
+      - ~/.config/nvim/:/root/.config/nvim/:ro
+      - .:/app/
     command: /bin/bash
     ports:
       - 3000:3000
