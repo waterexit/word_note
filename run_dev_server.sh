@@ -10,4 +10,5 @@ cd /app/${PROJECT_NAME}_front
 npm install
 npm run dev -- --host &
 
+npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
 
