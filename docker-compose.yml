@@ -5,12 +5,15 @@ services:
       - .env
     image: develop_image:latest
     volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group
       - ~/.gitconfig:/root/.gitconfig:ro
-      - ~/.config/nvim/:/root/.config/nvim/:ro
+      - ~/.config/nvim/:/root/.config/nvim/
       - .:/app/
     command: /app/run_dev_server.sh
     ports:
       - 3000:3000
+      - 5173:5173
     tty: true
   # editior:
   #   image: my_nvim:basic
