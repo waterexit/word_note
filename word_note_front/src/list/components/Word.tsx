@@ -1,9 +1,11 @@
-export default function Word(prop:{word:string}) {
+import word from "../../type/model/word.ts";
+
+export default function Word(prop: { word: word }) {
   return (
     <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
       <div className="p-4 md:p-5">
         <h3 className="text-lg font-bold text-gray-800 dark:text-white">
-          {prop.word}
+          {prop.word.word}
         </h3>
         <p className="mt-2 text-gray-500 dark:text-neutral-400">
           With supporting text below as a natural lead-in to additional content.
