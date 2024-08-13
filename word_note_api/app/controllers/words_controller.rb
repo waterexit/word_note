@@ -3,9 +3,9 @@ class WordsController < ApplicationController
 
   # GET /words
   def index
-    @words = Word.all
+    @words = Word.includes(tlanslation: [:example])
 
-    render json: @words
+    render json: @words, include: {tlanslation: {include: :example}}
   end
 
   # GET /words/1

@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import List from "./list/List.tsx";
 import word from "./type/model/word.ts";
+import axios from "axios";
 
 function App() {
   const [count, setCount] = useState(0);
-  const wordList: word[] = [{ word: "test22", phonetic: "test" },{ word: "test23", phonetic: "test" }];
+  const [wordList, setWordList] = useState<word[]>([]);
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_API_PREFIX}/words`, {
+      headers: { "content-Type": "application/json" },
+    }).then((res) => setWordList(res.data));
+  }, []);
   return (
     <>
       <div>
@@ -30,6 +36,9 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
+      </p>
+      <p>
+        {import.meta.env.VITE_API_PREFIX}
       </p>
     </>
   );
