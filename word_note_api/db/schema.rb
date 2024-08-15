@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_09_092306) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_15_194359) do
   create_table "examples", force: :cascade do |t|
-    t.integer "tlanslation_id", null: false
-    t.text "english"
+    t.integer "word_id", null: false
     t.text "japanese"
+    t.text "english"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tlanslation_id"], name: "index_examples_on_tlanslation_id"
+    t.index ["word_id"], name: "index_examples_on_word_id"
   end
 
-  create_table "tlanslations", force: :cascade do |t|
+  create_table "translations", force: :cascade do |t|
     t.integer "word_id", null: false
     t.text "japanese"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["word_id"], name: "index_tlanslations_on_word_id"
+    t.index ["word_id"], name: "index_translations_on_word_id"
   end
 
   create_table "words", force: :cascade do |t|
@@ -35,6 +35,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_09_092306) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "examples", "tlanslations"
-  add_foreign_key "tlanslations", "words"
+  add_foreign_key "examples", "words"
+  add_foreign_key "translations", "words"
 end

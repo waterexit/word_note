@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :tlanslation do
-    association :word
+  factory :translation do
+    word { nil }
     japanese { "MyText" }
   end
 end

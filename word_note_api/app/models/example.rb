@@ -1,3 +1,3 @@
 class Example < ApplicationRecord
-  belongs_to :tlanslation
+  belongs_to :word
 end

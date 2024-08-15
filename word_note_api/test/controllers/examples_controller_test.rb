@@ -12,7 +12,7 @@ class ExamplesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create example" do
     assert_difference("Example.count") do
-      post examples_url, params: { example: { english: @example.english, japanese: @example.japanese, tlanslation_id: @example.tlanslation_id } }, as: :json
+      post examples_url, params: { example: { english: @example.english, japanese: @example.japanese, word_id: @example.word_id } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class ExamplesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update example" do
-    patch example_url(@example), params: { example: { english: @example.english, japanese: @example.japanese, tlanslation_id: @example.tlanslation_id } }, as: :json
+    patch example_url(@example), params: { example: { english: @example.english, japanese: @example.japanese, word_id: @example.word_id } }, as: :json
     assert_response :success
   end
 

@@ -46,6 +46,6 @@ class ExamplesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def example_params
-      params.require(:example).permit(:tlanslation_id, :english, :japanese)
+      params.require(:example).permit(:word_id, :japanese, :english)
     end
 end

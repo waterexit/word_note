@@ -1,9 +1,9 @@
 class CreateExamples < ActiveRecord::Migration[7.1]
   def change
     create_table :examples do |t|
-      t.references :tlanslation, null: false, foreign_key: true
-      t.text :english
+      t.references :word, null: false, foreign_key: true
       t.text :japanese
+      t.text :english
 
       t.timestamps
     end
