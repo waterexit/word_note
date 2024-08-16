@@ -1,0 +1,16 @@
+{
+  "name": "add word_note",
+  "description": "send selection text to word_note api",
+  "version": "1.1",
+  "manifest_version": 3,
+  "permissions": ["contextMenus", "storage"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+  }
+}
