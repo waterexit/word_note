@@ -11,7 +11,7 @@ export default function Word(prop: { word: word }) {
           {prop.word.word}
         </h3>
         <p className="mt-2 text-gray-500 dark:text-neutral-400">
-          With supporting text below as a natural lead-in to additional content.
+          {prop.word.translations[0]?.japanese}
         </p>
         <a
           className="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent text-blue-600 decoration-2 hover:text-blue-700 hover:underline focus:underline focus:outline-none focus:text-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-600 dark:focus:text-blue-600"
