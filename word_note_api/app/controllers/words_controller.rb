@@ -1,11 +1,14 @@
 class WordsController < ApplicationController
   before_action :set_word, only: %i[ show update destroy ]
-
+  
+  def initialize
+    @extractor = WordFromWeb::Weblio::WeblioExtractor.new
+  end
   # GET /words
   def index
-    @words = Word.includes(tlanslation: [:example])
+    @words = Word.includes(:translations)
 
-    render json: @words, include: {tlanslation: {include: :example}}
+    render json: @words, include: :translations
   end
 
   # GET /words/1
@@ -15,8 +18,8 @@ class WordsController < ApplicationController
 
   # POST /words
   def create
-    @word = Word.new(word_params)
-
+    wordFromWeb = WordFromWeb::ExtractedWordFromWeb.new(word_params[:word], @extractor)
+    @word = Word.new(wordFromWeb.get_word_param)
     if @word.save
       render json: @word, status: :created, location: @word
     else
@@ -46,6 +49,7 @@ class WordsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def word_params
+      # TODO: unique check
       params.require(:word).permit(:word, :phonetic)
     end
 end
